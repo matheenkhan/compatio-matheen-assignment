@@ -29,32 +29,26 @@ function App() {
   const [formValues, setFormValues] = useState({});
   const [open, setOpen] = React.useState(false);
   const [storedData, setStoredData] = useState(localStorage.getItem('userData'));
-  const ref = useRef(0);
 
-  // useEffect(() => {
-  //   ref.current = 0;
-  //   console.log(ref.current);
-  //   console.log(users);
-  //   if (users.find(x => x.id === 999 || x.id === 998)?.length > 0) {
-  //     console.log('yes');
-  //     if (ref.current === 1) {
-  //       console.log(ref.current)
-  //       ref.current.value = 2;
-  //       dispatch(deleteItem(-999)); dispatch(deleteItem(-998))
-  //     } else if (ref.current = 0) {
-  //       ref.current.value = 1;
-  //     }
-  //   }
-  // }, [users])
+  const count = useRef(0)
+  useEffect(() => {
+    count.current = count.current + 1;
+    console.log(count.current);
+    if (count.current === 2) {
+      dispatch(deleteItem(998));
+    }
+    users.length === 0 && setShowForm(true);
+  }, [users])
+
 
   useEffect(() => {
-    dispatch(addBulk([{ id: 999, 'name': 'Try 1!', age: '87' }, { id: 998, 'age': 'Try 1! NAN!!!', age: '95' }]));
-    setTimeout(() => {
-      console.log(storedData)
-      let a = JSON.parse(storedData)
-      console.log(a);
-      Array.isArray(a) && dispatch(addBulk([...a]));
-    }, 555)
+    //UnComment for LocalStorage Retrieval
+    // setTimeout(() => {
+    //   console.log(storedData)
+    //   let a = JSON.parse(storedData)
+    //   console.log(a);
+    //   Array.isArray(a) && dispatch(addBulk([...a]));
+    // }, 5555)
     return () => {
       localStorage.setItem("userData", JSON.stringify(users));
       setStoredData(JSON.stringify(users))
@@ -118,9 +112,7 @@ function App() {
     )
   });
 
-  useEffect(() => {
-    users.length === 0 && setShowForm(true);
-  }, [users])
+
 
   const WithModal = ModalHOC(RegistrationForm);
   return (

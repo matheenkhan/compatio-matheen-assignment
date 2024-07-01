@@ -7,7 +7,7 @@ interface UserState {
 }
 
 // Define the initial state using that type
-const initialState: UserState = { users: [] }
+const initialState: UserState = { users: [{ id: 999, 'name': 'Try 1!', age: '87' }, { id: 998, age: '95' }] }
 
 export const UserSlice = createSlice({
     name: 'user',
