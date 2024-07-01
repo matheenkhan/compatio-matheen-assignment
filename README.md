@@ -1,3 +1,5 @@
+# USE NPM INSTALL FIRST, THEN NPM START IN THIS DIRECTORY
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
